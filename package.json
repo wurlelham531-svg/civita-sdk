@@ -1,6 +1,6 @@
 {
   "name": "civita-sdk",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Lightweight TypeScript SDK for community-engagement primitives on the Stacks blockchain: polls, badges, counters.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -12,7 +12,9 @@
       "types": "./dist/index.d.ts"
     }
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -25,7 +27,16 @@
     "lint": "eslint src tests --ext .ts",
     "prepublishOnly": "npm run build"
   },
-  "keywords": ["stacks", "clarity", "blockchain", "sdk", "polls", "badges", "counter", "civic"],
+  "keywords": [
+    "stacks",
+    "clarity",
+    "blockchain",
+    "sdk",
+    "polls",
+    "badges",
+    "counter",
+    "civic"
+  ],
   "author": "Civita",
   "license": "MIT",
   "repository": {
