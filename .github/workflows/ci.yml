@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20.x, 22.x, 24.x]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Install published package (smoke check)
+        continue-on-error: true
+        run: npm install civita-sdk --no-save
+
+      - name: Type check
+        run: npm run typecheck
+
+      - name: Lint
+        continue-on-error: true
+        run: npm run lint
+
+      - name: Run utils test
+        run: npm run test:utils
+
+      - name: Run contract test
+        run: npm run test:contract
+
+      - name: Run constants test
+        run: npm run test:constants
+
+      - name: Build
+        run: npm run build
