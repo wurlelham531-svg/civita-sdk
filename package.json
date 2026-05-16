@@ -1,6 +1,6 @@
 {
   "name": "civita-sdk",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Lightweight TypeScript SDK for community-engagement primitives on the Stacks blockchain: polls, badges, counters.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
